@@ -96,9 +96,23 @@ const About = () => {
 };
 
 // ProjectCard.jsx: 각 프로젝트를 보여주는 카드 컴포넌트
-const ProjectCard = ({ imgUrl, title, description, tags, githubUrl }) => {
+const ProjectCard = ({ imgUrl, title, description, tags, githubUrl, pptUrl, landingUrl, chatbotUrl, instagramUrl }) => {
+    // 카드 전체를 a 태그로 감싸 pptUrl로 이동. pptUrl 없으면 기존 동작 유지
+    const Wrapper = pptUrl ? 'a' : 'div';
+    const wrapperProps = pptUrl
+        ? {
+            href: pptUrl,
+            target: "_blank",
+            rel: "noopener noreferrer",
+            className: "bg-white rounded-2xl shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2 flex flex-col cursor-pointer"
+        }
+        : { className: "bg-white rounded-2xl shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2 flex flex-col" };
+
+    // 버튼/링크 노출 조건: 경도인지장애 대상 AI 챗봇 프로젝트일 때만
+    const isHemaProject = title === "경도인지장애 대상 AI 챗봇";
+
     return (
-        <div className="bg-white rounded-2xl shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2 flex flex-col">
+        <Wrapper {...wrapperProps}>
             <img src={imgUrl} alt={title} className="w-full h-48 object-cover" />
             <div className="p-6 flex flex-col flex-grow">
                 <h3 className="text-2xl font-bold mb-2">{title}</h3>
@@ -109,10 +123,16 @@ const ProjectCard = ({ imgUrl, title, description, tags, githubUrl }) => {
                     ))}
                 </div>
                 <div className="flex space-x-4 mt-auto">
-                    <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-blue-600 hover:underline">GitHub</a>
+                    <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-blue-600 hover:underline" onClick={e => pptUrl && e.stopPropagation()}>GitHub</a>
+                    {isHemaProject && (
+                        <>
+                            {chatbotUrl && <a href={chatbotUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-yellow-500 hover:underline">Chatbot</a>}
+                            {instagramUrl && <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-pink-400 hover:underline">Instagram</a>}
+                        </>
+                    )}
                 </div>
             </div>
-        </div>
+        </Wrapper>
     );
 };
 
@@ -129,28 +149,34 @@ const Projects = () => {
             title: "자세 교정 AI 서비스 개발",
             description: "이미지 기반 자세 분석으로 증상을 인식하고, 사용자에게 맞는 스트레칭 루틴과 유튜브 영상을 추천하는 AI agent 서비스를 개발했습니다. Spring Boot를 이용한 백엔드 개발, 랭그래프 설계 등 주요 기능 구현을 담당했습니다. ",
             tags: ["YOLO", "AI agent", "LLM", "YouTube API", "React", "Spring Boot", "FastAPI", "Ollama", "Postgre", ],
-            githubUrl: "https://github.com/TeamSynergym" 
+            githubUrl: "https://github.com/TeamSynergym",
+            pptUrl: "https://www.canva.com/design/DAGutloH450/rbcwFgROity-C_IIUfJZUg/view?utm_content=DAGutloH450&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h2d4a790fef"
         },
         {
             imgUrl: chatbotImg,
             title: "경도인지장애 대상 AI 챗봇",
             description: "Medilux 창업 동아리 프로젝트로, 경도 인지 장애 완화를 위한 인지 재활 챗봇을 제작했습니다. Django를 활용하여 인지능력 테스트와 데일리 태스크 로직 백엔드 개발을 담당했습니다. ",
             tags: ["AI 헬스케어", "경도인지장애", "챗봇", "Django"],
-            githubUrl: "https://github.com/Team-Hema"
+            githubUrl: "https://github.com/Team-Hema",
+            pptUrl: "https://www.canva.com/design/DAGut5H6Nko/Vua0eNa_BB6R3eEgfe_55Q/view?utm_content=DAGut5H6Nko&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h2818734e85",
+            landingUrl: "https://hema.eldertime.kr",
+            chatbotUrl: "http://pf.kakao.com/_xbgfun",
+            instagramUrl: "https://www.instagram.com/eldertime.hema?igsh=MWdxaDE5ZmV3a2x1cg=="
         },
         {
             imgUrl: medicalPlatformImg,
             title: "방문진료 중개 플랫폼",
             description: "해커톤에 참가하여 병원 예약 및 위치 기반의 환자와 의사 중개 시스템을 설계하고 프로토타입을 개발했습니다. 모델 학습을 위한 데이터 전처리와 FastAPI 연결을 담당했습니다.",
             tags: ["해커톤", "최적 알고리즘", "colab", "시스템 설계"],
-            githubUrl: "https://github.com/MediluxXTaveHACK-TEAM3" 
+            githubUrl: "https://github.com/MediluxXTaveHACK-TEAM3",
+            pptUrl: "https://www.canva.com/design/DAGuts5YO0Q/v9Xetj5zJxAF39gqgHX65A/view?utm_content=DAGuts5YO0Q&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h2e5b407b3c"
         },
         {
             imgUrl: kaggleImg,
             title: "Kaggle 칼로리 예측 모델",
             description: "Kaggle Playground Prediction Competition에 참여하여 건강 데이터 기반 칼로리 예측 모델의 성능을 고도화했습니다. RMSLE 기준으로 모델을 튜닝하며 성능을 개선한 경험이 있습니다.",
             tags: ["Kaggle", "XGBoost", "데이터 분석", "모델 튜닝"],
-            githubUrl: "https://www.kaggle.com/code/cjungy2/calorie-expenditure-prediction-model-development"
+            githubUrl: "https://www.kaggle.com/code/cjungy2/calorie-expenditure-prediction-model-development",
         }
     ];
 
