@@ -32,7 +32,10 @@ const Header = () => {
         <header className="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 shadow-sm">
             <div className="container mx-auto px-4">
                 <div className="flex items-center justify-between h-20">
-                    <a href="#hero" className="text-2xl font-bold text-gray-900">채정윤</a>
+                    <a href="#hero" className="flex items-center space-x-2 text-xl font-bold text-gray-900">
+                        <img src="/src/assets/my-notion-face-portrait.png" alt="logo" className="h-12 w-12" style={{marginLeft: '4px'}} />
+                        <span>채정윤</span>
+                    </a>
                     <nav className="hidden md:flex space-x-8 text-lg font-semibold">
                         <a href="#about" className="text-gray-600 hover:text-blue-600 transition-colors">About</a>
                         <a href="#projects" className="text-gray-600 hover:text-blue-600 transition-colors">Projects</a>
