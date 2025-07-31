@@ -50,16 +50,14 @@ const Header = () => {
 // Hero.jsx: 웹사이트의 가장 첫 화면
 const Hero = () => {
     return (
-        <section id="hero" className="min-h-screen flex items-center bg-white">
-            <div className="container mx-auto px-4 text-center">
-                <h1 className="text-4.5xl md:text-7xl font-black text-gray-900 leading-tight mb-4">
-                    문제 해결과 도전을 즐기는<br/>개발자 채정윤입니다
+        <section id="hero" className="min-h-screen flex items-center bg-white py-16 md:py-0">
+            <div className="container mx-auto px-4 text-center flex flex-col justify-center w-full">
+                <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl font-black text-gray-900 leading-tight mb-4 break-keep">
+                    문제 해결과 도전을 즐기는<br className="hidden xs:inline"/>개발자 채정윤입니다
                 </h1>
-                <p className="text-xl md:text-1xl text-gray-600 mb-12 max-w-3xl mx-auto">
-                    개인보다 팀을 생각합니다.
-                    <br/>
-                    추진력있게 목표를 향해 나아갑니다.
-                    <br/>
+                <p className="text-base xs:text-lg sm:text-xl md:text-1xl text-gray-600 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed">
+                    개인보다 팀을 생각합니다.<br className="hidden xs:inline"/>
+                    추진력있게 목표를 향해 나아갑니다.<br className="hidden xs:inline"/>
                     성실함과 실천하는 자세를 중시합니다.
                 </p>
                 <div className="space-x-4">
