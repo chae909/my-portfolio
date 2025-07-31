@@ -275,7 +275,7 @@ const Contact = () => {
                         <BlogIcon />
                     </a>
                 </div>
-                <a href="cowjddbs8256@gmail.com" className="inline-block bg-white text-blue-600 text-xl font-bold px-10 py-4 rounded-xl hover:bg-blue-50 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                <a href="mailto:cowjddbs8256@gmail.com" className="inline-block bg-white text-blue-600 text-xl font-bold px-10 py-4 rounded-xl hover:bg-blue-50 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                     메일로 연락하기
                 </a>
             </div>
