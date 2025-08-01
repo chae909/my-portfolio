@@ -1,4 +1,5 @@
 import React from 'react';
+import profileImg from '../assets/profile.jpg';
 
 const About = () => {
     return (
@@ -7,7 +8,7 @@ const About = () => {
                 <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-16 text-center">About Me</h2>
                 <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12">
                     <div className="w-48 h-48 md:w-60 md:h-60 rounded-full overflow-hidden shadow-lg flex-shrink-0">
-                        <img src="/src/assets/profile.jpg" alt="채정윤 프로필 사진" className="w-full h-full object-cover" />
+                        <img src={profileImg} alt="채정윤 프로필 사진" className="w-full h-full object-cover" />
                     </div>
                     <div className="text-center md:text-left">
                         <p className="text-lg md:text-xl leading-relaxed mb-4">
