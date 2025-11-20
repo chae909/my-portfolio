@@ -4,6 +4,7 @@ import synergymImg from '../assets/synergym.png';
 import hemaImg from '../assets/hema.png';
 import hack3Img from '../assets/hack3.jpg';
 import kaggleImg from '../assets/kaggle.png';
+import sejongImg from '../assets/sejong.png';
 
 const Projects = () => {
     const projectData = [
@@ -40,6 +41,13 @@ const Projects = () => {
             description: "Kaggle Playground Prediction Competition에 참여하여 건강 데이터 기반 칼로리 예측 모델의 성능을 고도화했습니다. RMSLE 기준으로 모델을 튜닝하며 성능을 개선한 경험이 있습니다.",
             tags: ["Kaggle", "XGBoost", "데이터 분석", "모델 튜닝"],
             githubUrl: "https://www.kaggle.com/code/cjungy2/calorie-expenditure-prediction-model-development",
+        },
+        {
+            imgUrl: sejongImg,
+            title: "세종시 빅데이터 공모전",
+            description: "국립박물관단지와 연계한 한글 문화시설 입지 최적화 전략을 위한 데이터 분석 프로젝트에 참여했습니다. 다양한 데이터 소스를 통합하여 입지 선정 모델을 구축하고, 시각화 도구를 활용해 결과를 효과적으로 전달했습니다.",
+            tags: ["클러스터링", "데이터 분석", "시각화", "입지 선정"],
+            pptUrl: "https://www.canva.com/design/DAG5OYLrELU/kpudI0sTCmWxUIdsUYMUxw/view?utm_content=DAG5OYLrELU&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hb0b21f5968"
         }
     ];
 
