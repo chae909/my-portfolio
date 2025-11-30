@@ -19,7 +19,7 @@ const ProjectCard = ({ imgUrl, title, description, tags, githubUrl, pptUrl, land
         <Wrapper {...wrapperProps}>
             <img src={imgUrl} alt={title} className="w-full h-48 object-cover" />
             <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-2xl font-bold mb-2">{title}</h3>
+                <h3 className="text-2xl font-bold mb-2 text-black">{title}</h3>
                 <p className="text-gray-600 mb-4 flex-grow">{description}</p>
                 <div className="mb-4">
                     {tags.map((tag, index) => (

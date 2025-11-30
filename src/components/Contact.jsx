@@ -26,24 +26,23 @@ const BlogIcon = () => (
 
 const Contact = () => {
     return (
-        <section id="contact" className="py-24 md:py-32 bg-gray-200 text-black">
-            <div className="container mx-auto px-4 text-center">
-                <h2 className="text-4xl md:text-5xl font-extrabold mb-4">Contact Me</h2>
-                <br/>
-                <div className="flex justify-center space-x-6 mb-4">
-                    <a href="https://github.com/chae909" target="_blank" rel="noopener noreferrer" className="text-black hover:text-blue-600 transition-colors duration-300">
-                        <GithubIcon />
-                    </a>
-                    <a href="https://www.linkedin.com/in/%EC%A0%95%EC%9C%A4-%EC%B1%84-4b01a8317/" target="_blank" rel="noopener noreferrer" className="text-black hover:text-blue-600 transition-colors duration-300">
-                        <LinkedinIcon />
-                    </a>
-                    <a href="https://velog.io/@cjungy2/posts" target="_blank" rel="noopener noreferrer" className="text-black hover:text-blue-600 transition-colors duration-300">
-                        <BlogIcon />
-                    </a>
+        <section id="contact" className="py-24 md:py-32">
+            <div className="container mx-auto px-4">
+                <div className="glass-card p-8 md:p-12 rounded-2xl text-center">
+                    <h2 className="text-3xl md:text-4xl font-extrabold brand-text mb-4 animate-fade-in" style={{animationDelay: '0.05s'}}>Contact Me</h2>
+                    <div className="flex justify-center space-x-6 mb-6 animate-fade-in" style={{animationDelay: '0.15s'}}>
+                        <a href="https://github.com/chae909" target="_blank" rel="noopener noreferrer" className="hover:opacity-90 transition-opacity duration-300" aria-label="GitHub">
+                            <GithubIcon />
+                        </a>
+                        <a href="https://www.linkedin.com/in/%EC%A0%95%EC%9C%A4-%EC%B1%84-4b01a8317/" target="_blank" rel="noopener noreferrer" className="hover:opacity-90 transition-opacity duration-300" aria-label="LinkedIn">
+                            <LinkedinIcon />
+                        </a>
+                        <a href="https://velog.io/@cjungy2/posts" target="_blank" rel="noopener noreferrer" className="hover:opacity-90 transition-opacity duration-300" aria-label="Blog">
+                            <BlogIcon />
+                        </a>
+                    </div>
+                    <a href="mailto:cowjddbs8256@gmail.com" className="inline-block brand-btn px-10 py-4 rounded-xl font-bold text-lg transition-transform duration-300 hover:-translate-y-1">메일로 연락하기</a>
                 </div>
-                <a href="mailto:cowjddbs8256@gmail.com" className="inline-block bg-white text-blue-600 text-xl font-bold px-10 py-4 rounded-xl hover:bg-blue-50 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                    메일로 연락하기
-                </a>
             </div>
         </section>
     );

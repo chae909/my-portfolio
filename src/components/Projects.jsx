@@ -60,13 +60,15 @@ const Projects = () => {
     ];
 
     return (
-        <section id="projects" className="py-24 md:py-32 bg-white">
+        <section id="projects" className="py-24 md:py-32">
             <div className="container mx-auto px-4">
-                <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-16 text-center">Projects</h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                    {projectData.map((project, index) => (
-                        <ProjectCard key={index} {...project} />
-                    ))}
+                <div className="glass-card p-8 md:p-12 rounded-2xl">
+                    <h2 className="text-3xl md:text-4xl font-extrabold brand-text mb-10 text-center animate-fade-in" style={{animationDelay: '0.05s'}}>Projects</h2>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto animate-fade-in" style={{animationDelay: '0.2s'}}>
+                        {projectData.map((project, index) => (
+                            <ProjectCard key={index} {...project} />
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

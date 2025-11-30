@@ -1,3 +1,49 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+	/* Gray + sky-blue palette for comfortable reading */
+	--brand-bg-start: #0f1720; /* deep slate-blue */
+	--brand-bg-end: #12384f;   /* muted sky-blue */
+	--brand-accent: #60a5fa;   /* sky-400 */
+	--brand-accent-2: #93c5fd; /* lighter sky */
+	--glass-bg: rgba(255,255,255,0.04);
+	--glass-border: rgba(255,255,255,0.06);
+	--text-on-brand: #e6f0f8;  /* light bluish gray */
+}
+
+/* Brand utility classes (small, coexisting with Tailwind) */
+.brand-bg { background: linear-gradient(135deg, var(--brand-bg-start) 0%, var(--brand-bg-end) 100%); }
+.brand-accent { background-color: var(--brand-accent); color: white; }
+.brand-accent-hover { background-color: var(--brand-accent-2); }
+.glass-card { background: var(--glass-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--glass-border); }
+.brand-text { color: var(--text-on-brand); }
+.brand-btn { background: var(--brand-accent); color: white; box-shadow: 0 8px 30px rgba(96,165,250,0.12); }
+.brand-btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.06); color: var(--text-on-brand); }
+
+/* Nav link helper */
+.nav-link { color: var(--text-on-navy); opacity: 0.88; transition: color 220ms ease, opacity 220ms ease; }
+.nav-link:hover { color: var(--brand-accent); opacity: 1; }
+
+/* Hero hover-driven curve motion */
+.hero-section .drift-rect {
+	transition: transform 600ms cubic-bezier(.2,.9,.3,1), opacity 600ms ease, filter 600ms ease;
+}
+.hero-section:hover .drift-rect {
+	transform: translateY(-6px) rotate(1deg) scale(1.02);
+	opacity: 0.95;
+	filter: blur(8px);
+}
+
+/* Slight decorative hover for slabs */
+.hero-section .drift-vertical {
+	transition: transform 900ms ease, opacity 900ms ease;
+}
+.hero-section:hover .drift-vertical { transform: translateY(-8px) rotate(2deg); opacity: 0.9; }
+
+/* Ensure reduced-motion still respected */
+@media (prefers-reduced-motion: reduce) {
+	.hero-section .drift-rect,
+	.hero-section .drift-vertical { transition: none !important; transform: none !important; }
+}
