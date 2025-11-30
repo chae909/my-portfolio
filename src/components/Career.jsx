@@ -39,6 +39,21 @@ const Career = () => {
           description="경도인지장애 챗봇 기획 및 병원 인터뷰 기반 사용자 분석, 방문진료 중개 서비스 해커톤 참여 및 수상."
         />
         <CareerItem 
+          title="한국인공지능·소프트웨어산업협회 부트캠프"
+          sub="202X.XX - 202X.XX (6개월)"
+          description="생성형 AI와 프롬프트를 활용한 AI 응용 개발자 양성과정 수료 및 우수학습자상 수상."
+        />
+        <CareerItem 
+          title="DF (데이터분석/AI 동아리)"
+          sub="2025.09 - 2025.12"
+          description="데이터 분석 및 인공지능 심화 스터디, 경진대회 참가 및 공모전 활동."
+        />
+        <CareerItem 
+          title="개발 기술 블로그 운영"
+          sub="2025.02 - 진행중"
+          description="풀스택/AI/데이터 분석 학습 과정 및 프로젝트 회고 기록 (velog.io/@cjungy2)."
+        />
+        <CareerItem 
           title="동덕여자대학교 졸업 (예정)"
           sub="2020.03 - 2025.02"
           description="정보통계학과 / 응용화학과 복수전공"

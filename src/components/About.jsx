@@ -1,5 +1,5 @@
 import React from 'react';
-import profileImg from '../assets/profile.jpg';
+import profileImg from '../assets/my-notion-face-portrait.png';
 
 const About = () => {
     return (

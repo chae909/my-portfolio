@@ -5,6 +5,7 @@ import hemaImg from '../assets/hema.png';
 import hack3Img from '../assets/hack3.jpg';
 import kaggleImg from '../assets/kaggle.png';
 import sejongImg from '../assets/sejong.png';
+import dfmlImg from '../assets/dfml.webp';
 
 const Projects = () => {
     const projectData = [
@@ -48,6 +49,13 @@ const Projects = () => {
             description: "국립박물관단지와 연계한 한글 문화시설 입지 최적화 전략을 위한 데이터 분석 프로젝트에 참여했습니다. 다양한 데이터 소스를 통합하여 입지 선정 모델을 구축하고, 시각화 도구를 활용해 결과를 효과적으로 전달했습니다.",
             tags: ["클러스터링", "데이터 분석", "시각화", "입지 선정"],
             pptUrl: "https://www.canva.com/design/DAG5OYLrELU/kpudI0sTCmWxUIdsUYMUxw/view?utm_content=DAG5OYLrELU&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hb0b21f5968"
+        },
+        {
+            imgUrl: dfmlImg,
+            title: "Vision Transformer(ViT)를 활용한 딥페이크 탐지 모델 개발",
+            description: "국립과학수사연구원 주관 경진대회에서 Vision Transformer(ViT)를 도입하여 딥페이크 탐지 모델을 개발했습니다. CNN 대신 Self-Attention 메커니즘을 활용해 이미지의 전역적 문맥과 미세한 조작 흔적을 동시에 분석했습니다. 사전 학습된 모델의 전이 학습(Transfer Learning)과 주파수(FFT) 분석을 통해 98.83%의 높은 Macro F1-Score를 달성했습니다.",
+            tags: ["Vision Transformer", "딥러닝", "딥페이크 탐지", "전이 학습"],
+            pptUrl: "https://www.canva.com/design/DAG6Ku5Lnow/KJ9rMUEI5Z0s7pjZXZ-m1g/view?utm_content=DAG6Ku5Lnow&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h22b490791a"
         }
     ];
 
