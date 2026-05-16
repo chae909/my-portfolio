@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}", // src 폴더 안의 모든 파일 대상
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        headline: ['"Noto Serif"', 'Georgia', 'serif'],
+      },
+    },
   },
   plugins: [],
 }

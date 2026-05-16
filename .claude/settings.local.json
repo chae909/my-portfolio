@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(New-Item -ItemType File -Path \"C:\\\\MyFiles\\\\MyDev\\\\my-portfolio\\\\src\\\\components\\\\Career.jsx\" -Force)",
+      "Bash(Out-Null)",
+      "Bash(Remove-Item -Force \"C:\\\\MyFiles\\\\MyDev\\\\my-portfolio\\\\src\\\\index.jsx\" -ErrorAction SilentlyContinue)",
+      "Bash(Remove-Item -Force \"C:\\\\MyFiles\\\\MyDev\\\\my-portfolio\\\\src\\\\App.css\" -ErrorAction SilentlyContinue)",
+      "Bash(Remove-Item -Force \"C:\\\\MyFiles\\\\MyDev\\\\my-portfolio\\\\src\\\\components\\\\Footer.tsx\" -ErrorAction SilentlyContinue)",
+      "Bash(Remove-Item -Force \"C:\\\\MyFiles\\\\MyDev\\\\my-portfolio\\\\src\\\\components\\\\SkillCard.jsx\" -ErrorAction SilentlyContinue)",
+      "Bash(Remove-Item -Recurse -Force \"C:\\\\MyFiles\\\\MyDev\\\\my-portfolio\\\\src\\\\components\\\\icons\" -ErrorAction SilentlyContinue)"
+    ]
+  }
+}

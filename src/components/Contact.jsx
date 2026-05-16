@@ -1,47 +1,182 @@
-import React from 'react';
+import emailjs from '@emailjs/browser';
+import { useRef, useState } from 'react';
 
-// SVG 아이콘 컴포넌트들
-const GithubIcon = () => (
-    <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle cx="12" cy="12" r="12" fill="#181717"/>
-        <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" fill="#fff"/>
-    </svg>
-);
-
-const LinkedinIcon = () => (
-    <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect width="24" height="24" rx="4" fill="#0A66C2"/>
-        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" fill="#fff"/>
-    </svg>
-);
-
-const BlogIcon = () => (
-    <svg className="w-8 h-8" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <g>
-        <circle cx="20" cy="20" r="20" fill="#20C997"/>
-        <path d="M12.5 12.5V27.5C12.5 28.0523 12.9477 28.5 13.5 28.5C14.0523 28.5 14.5 28.0523 14.5 27.5V12.5C14.5 11.9477 14.0523 11.5 13.5 11.5C12.9477 11.5 12.5 11.9477 12.5 12.5ZM18.5 16.5V27.5C18.5 28.0523 18.9477 28.5 19.5 28.5C20.0523 28.5 20.5 28.0523 20.5 27.5V16.5C20.5 15.9477 20.0523 15.5 19.5 15.5C18.9477 15.5 18.5 15.9477 18.5 16.5ZM24.5 19.5V27.5C24.5 28.0523 24.9477 28.5 25.5 28.5C26.0523 28.5 26.5 28.0523 26.5 27.5V19.5C26.5 18.9477 26.0523 18.5 25.5 18.5C24.9477 18.5 24.5 18.9477 24.5 19.5Z" fill="white"/>
-      </g>
-    </svg>
-);
+const LINKS = [
+    { label: 'GitHub', href: 'https://github.com/chae909' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/%EC%A0%95%EC%9C%A4-%EC%B1%84-4b01a8317/' },
+    { label: 'Blog', href: 'https://velog.io/@cjungy2/posts' },
+];
 
 const Contact = () => {
+    const [status, setStatus] = useState('idle'); // 'idle' | 'sending' | 'success' | 'error'
+    const [errorMsg, setErrorMsg] = useState('');
+    const formRef = useRef(null);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus('sending');
+
+        try {
+            await emailjs.sendForm(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+                formRef.current,
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+            );
+            setStatus('success');
+            formRef.current.reset();
+        } catch (error) {
+            setStatus('error');
+            setErrorMsg('전송에 실패했어요. 잠시 후 다시 시도해주세요.');
+        }
+    };
+
     return (
-        <section id="contact" className="py-24 md:py-32">
-            <div className="container mx-auto px-4">
-                <div className="glass-card p-8 md:p-12 rounded-2xl text-center">
-                    <h2 className="text-3xl md:text-4xl font-extrabold brand-text mb-4 animate-fade-in" style={{animationDelay: '0.05s'}}>Contact Me</h2>
-                    <div className="flex justify-center space-x-6 mb-6 animate-fade-in" style={{animationDelay: '0.15s'}}>
-                        <a href="https://github.com/chae909" target="_blank" rel="noopener noreferrer" className="hover:opacity-90 transition-opacity duration-300" aria-label="GitHub">
-                            <GithubIcon />
-                        </a>
-                        <a href="https://www.linkedin.com/in/%EC%A0%95%EC%9C%A4-%EC%B1%84-4b01a8317/" target="_blank" rel="noopener noreferrer" className="hover:opacity-90 transition-opacity duration-300" aria-label="LinkedIn">
-                            <LinkedinIcon />
-                        </a>
-                        <a href="https://velog.io/@cjungy2/posts" target="_blank" rel="noopener noreferrer" className="hover:opacity-90 transition-opacity duration-300" aria-label="Blog">
-                            <BlogIcon />
-                        </a>
+        <section id="contact" className="px-6 md:px-20 py-20 max-w-[1100px] mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+
+                {/* 왼쪽 — 텍스트 영역 */}
+                <div>
+                    <h2 className="font-['Noto_Serif'] text-4xl md:text-5xl font-bold leading-[1.15]
+                                   text-[#1b1c1d] mb-6">
+                        Let's build the<br />
+                        <span className="text-[#3366cc] italic">next frontier</span><br />
+                        together.
+                    </h2>
+                    <p className="text-[#434653] text-sm leading-relaxed mb-10">
+                        현재 AI·풀스택·ML 분야의 인턴 및 주니어 포지션, 그리고 스타트업 협업 및 프리랜서 프로젝트 기회에 관심을 가지고 있습니다.
+                    </p>
+
+                    <div className="flex flex-col gap-5">
+                        <div className="flex items-center gap-4
+                                        border border-[#c3c6d5] rounded-lg px-5 py-4
+                                        bg-white">
+                            <span className="text-[#3366cc] text-xl">✉</span>
+                            <div>
+                                <p className="text-[10px] uppercase tracking-widest
+                                              text-[#737784] font-semibold mb-0.5">EMAIL</p>
+                                <p className="text-[#1b1c1d] text-sm font-medium">
+                                    cowjddbs8256@gmail.com
+                                </p>
+                            </div>
+                        </div>
+                        <div className="flex items-center gap-4
+                                        border border-[#c3c6d5] rounded-lg px-5 py-4
+                                        bg-white">
+                            <span className="text-[#3366cc] text-xl">📍</span>
+                            <div>
+                                <p className="text-[10px] uppercase tracking-widest
+                                              text-[#737784] font-semibold mb-0.5">LOCATION</p>
+                                <p className="text-[#1b1c1d] text-sm font-medium">
+                                    Seoul, South Korea
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <a href="mailto:cowjddbs8256@gmail.com" className="inline-block brand-btn px-10 py-4 rounded-xl font-bold text-lg transition-transform duration-300 hover:-translate-y-1">메일로 연락하기</a>
+
+                    <div className="flex gap-6 mt-8">
+                        {LINKS.map(({ label, href }) => (
+                            <a
+                                key={label}
+                                href={href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-sm uppercase tracking-widest font-semibold
+                                           text-[#737784] hover:text-[#3366cc] transition-colors"
+                            >
+                                {label}
+                            </a>
+                        ))}
+                    </div>
+                </div>
+
+                {/* 오른쪽 — 폼 카드 */}
+                <div className="bg-white border border-[#c3c6d5] rounded-lg p-8 shadow-sm">
+                    {status === 'success' ? (
+                        <div className="flex flex-col items-center justify-center
+                                        py-16 text-center">
+                            <div className="text-5xl mb-6">✅</div>
+                            <p className="text-[#1b1c1d] text-xl font-['Noto_Serif']
+                                          font-bold italic mb-3">
+                                메시지가 전송됐어요!
+                            </p>
+                            <p className="text-[#737784] text-sm tracking-wide">
+                                빠른 시일 내에 답장 드릴게요.
+                            </p>
+                        </div>
+                    ) : (
+                        <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-6">
+                            <div>
+                                <label className="block text-[10px] uppercase tracking-[0.2em]
+                                                  font-semibold text-[#737784] mb-2">
+                                    이름
+                                </label>
+                                <input
+                                    name="from_name"
+                                    type="text"
+                                    required
+                                    className="w-full bg-[#f5f3f4] border border-[#c3c6d5]
+                                               rounded-lg px-4 py-3 text-[#1b1c1d] text-sm
+                                               placeholder:text-[#c3c6d5]
+                                               focus:outline-none focus:border-[#3366cc]
+                                               focus:bg-white transition-all"
+                                    placeholder="홍길동"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-[10px] uppercase tracking-[0.2em]
+                                                  font-semibold text-[#737784] mb-2">
+                                    이메일
+                                </label>
+                                <input
+                                    name="from_email"
+                                    type="email"
+                                    required
+                                    className="w-full bg-[#f5f3f4] border border-[#c3c6d5]
+                                               rounded-lg px-4 py-3 text-[#1b1c1d] text-sm
+                                               placeholder:text-[#c3c6d5]
+                                               focus:outline-none focus:border-[#3366cc]
+                                               focus:bg-white transition-all"
+                                    placeholder="hello@example.com"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-[10px] uppercase tracking-[0.2em]
+                                                  font-semibold text-[#737784] mb-2">
+                                    내용
+                                </label>
+                                <textarea
+                                    name="message"
+                                    required
+                                    rows={5}
+                                    className="w-full bg-[#f5f3f4] border border-[#c3c6d5]
+                                               rounded-lg px-4 py-3 text-[#1b1c1d] text-sm
+                                               placeholder:text-[#c3c6d5]
+                                               focus:outline-none focus:border-[#3366cc]
+                                               focus:bg-white transition-all resize-none"
+                                    placeholder="안녕하세요, 협업 제안이 있어서 연락드립니다..."
+                                />
+                            </div>
+
+                            {status === 'error' && (
+                                <p className="text-red-500 text-xs tracking-wide -mb-2">
+                                    {errorMsg}
+                                </p>
+                            )}
+
+                            <button
+                                type="submit"
+                                disabled={status === 'sending'}
+                                className={
+                                    status === 'sending'
+                                        ? 'w-full bg-[#3366cc] text-white text-xs font-bold uppercase tracking-widest px-8 py-4 rounded-lg opacity-60 cursor-not-allowed transition-all'
+                                        : 'w-full bg-[#3366cc] text-white text-xs font-bold uppercase tracking-widest px-8 py-4 rounded-lg hover:brightness-110 transition-all'
+                                }
+                            >
+                                {status === 'sending' ? 'SENDING...' : 'SEND INQUIRY'}
+                            </button>
+                        </form>
+                    )}
                 </div>
             </div>
         </section>

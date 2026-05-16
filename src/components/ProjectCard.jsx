@@ -1,42 +1,58 @@
 import React from 'react';
 
-const ProjectCard = ({ imgUrl, title, description, tags, githubUrl, pptUrl, landingUrl, chatbotUrl, instagramUrl }) => {
-    // 카드 전체를 a 태그로 감싸 pptUrl로 이동. pptUrl 없으면 기존 동작 유지
-    const Wrapper = pptUrl ? 'a' : 'div';
-    const wrapperProps = pptUrl
-        ? {
-            href: pptUrl,
-            target: "_blank",
-            rel: "noopener noreferrer",
-            className: "bg-white rounded-2xl shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2 flex flex-col cursor-pointer"
-        }
-        : { className: "bg-white rounded-2xl shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2 flex flex-col" };
-
-    // 버튼/링크 노출 조건: 경도인지장애 대상 AI 챗봇 프로젝트일 때만
-    const isHemaProject = title === "경도인지장애 대상 AI 챗봇";
-
+const ProjectCard = ({ imgUrl, category, title, description, tags, githubUrl, pptUrl, landingUrl, chatbotUrl, instagramUrl }) => {
     return (
-        <Wrapper {...wrapperProps}>
-            <img src={imgUrl} alt={title} className="w-full h-48 object-cover" />
-            <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-2xl font-bold mb-2 text-black">{title}</h3>
-                <p className="text-gray-600 mb-4 flex-grow">{description}</p>
-                <div className="mb-4">
-                    {tags.map((tag, index) => (
-                        <span key={index} className="inline-block bg-blue-100 text-blue-800 text-xs font-semibold mr-2 mb-2 px-2.5 py-0.5 rounded-full">{tag}</span>
+        <div className="group flex flex-col border border-[#c3c6d5] rounded-lg overflow-hidden bg-white hover:shadow-2xl transition-all">
+            <div className="aspect-video overflow-hidden bg-[#efedee]">
+                <img
+                    src={imgUrl}
+                    alt={title}
+                    className="w-full h-full object-cover grayscale contrast-125 opacity-40 group-hover:scale-105 transition-transform duration-700"
+                />
+            </div>
+            <div className="p-8 flex flex-col flex-grow">
+                <p className="text-[10px] uppercase tracking-widest text-[#3366cc] font-bold mb-2">{category}</p>
+                <h3 className="font-headline text-2xl font-bold text-[#1b1c1d] group-hover:text-[#3366cc] transition-colors mb-3">{title}</h3>
+                <p className="text-[#434653] text-sm leading-relaxed flex-grow mb-5">{description}</p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                    {tags.map((tag, i) => (
+                        <span key={i} className="bg-[#efedee] text-[#434653] text-xs px-3 py-1 rounded-lg">{tag}</span>
                     ))}
                 </div>
-                <div className="flex space-x-4 mt-auto">
-                    <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-blue-600 hover:underline" onClick={e => pptUrl && e.stopPropagation()}>GitHub</a>
-                    {isHemaProject && (
-                        <>
-                            {chatbotUrl && <a href={chatbotUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-yellow-500 hover:underline">Chatbot</a>}
-                            {instagramUrl && <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-pink-400 hover:underline">Instagram</a>}
-                        </>
+                <div className="border-t border-[#c3c6d5] pt-6 flex flex-wrap gap-x-6 gap-y-2">
+                    {githubUrl && (
+                        <a href={githubUrl} target="_blank" rel="noopener noreferrer"
+                            className="text-[10px] uppercase tracking-widest text-[#1b1c1d] hover:text-[#3366cc] transition-colors font-bold">
+                            GitHub →
+                        </a>
+                    )}
+                    {pptUrl && (
+                        <a href={pptUrl} target="_blank" rel="noopener noreferrer"
+                            className="text-[10px] uppercase tracking-widest text-[#1b1c1d] hover:text-[#3366cc] transition-colors font-bold">
+                            발표자료 →
+                        </a>
+                    )}
+                    {landingUrl && (
+                        <a href={landingUrl} target="_blank" rel="noopener noreferrer"
+                            className="text-[10px] uppercase tracking-widest text-[#1b1c1d] hover:text-[#3366cc] transition-colors font-bold">
+                            Live →
+                        </a>
+                    )}
+                    {chatbotUrl && (
+                        <a href={chatbotUrl} target="_blank" rel="noopener noreferrer"
+                            className="text-[10px] uppercase tracking-widest text-[#1b1c1d] hover:text-[#3366cc] transition-colors font-bold">
+                            Chatbot →
+                        </a>
+                    )}
+                    {instagramUrl && (
+                        <a href={instagramUrl} target="_blank" rel="noopener noreferrer"
+                            className="text-[10px] uppercase tracking-widest text-[#1b1c1d] hover:text-[#3366cc] transition-colors font-bold">
+                            Instagram →
+                        </a>
                     )}
                 </div>
             </div>
-        </Wrapper>
+        </div>
     );
 };
 
